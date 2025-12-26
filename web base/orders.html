@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order History - Cafewaa</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo" id="siteName">Café Delight</div>
+      <ul class="nav-links">
+        <li><a href="menu.html" class="nav-link"><span class="nav-icon">☕</span> Menu</a></li>
+        <li><a href="cart.html" class="nav-link"><span class="nav-icon">🛒</span> Cart <span class="cart-badge" id="cartCount">0</span></a></li>
+        <li><a href="orders.html" class="nav-link"><span class="nav-icon">📋</span> Orders</a></li>
+        <li id="adminLink" style="display: none;"><a href="admin.html" class="nav-link"><span class="nav-icon">⚙️</span> Admin</a></li>
+      </ul>
+      <div class="user-info">
+        <span class="user-name" id="userName"></span>
+        <button class="logout-btn" onclick="auth.logout()">Logout</button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div style="display:flex; align-items:center; gap:1rem; justify-content:space-between;">
+      <h1>My Order History</h1>
+      <button class="btn" onclick="clearOrderHistory()" style="max-width:200px;">Clear History</button>
+    </div>
+    <div id="message"></div>
+    <div class="orders-list" id="ordersList"></div>
+  </div>
+
+  <script src="js/database.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/orders.js"></script>
+</body>
+</html>
+

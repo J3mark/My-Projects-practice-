@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Cafewaa</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Login to Your Account</h2>
+    <div id="message"></div>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-with-toggle">
+          <input type="password" id="password" required class="password-input">
+          <div class="show-password-row">
+            <input type="checkbox" id="showPassword">
+            <label for="showPassword">Show password</label>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn">Login</button>
+    </form>
+    <div class="form-footer">
+      <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+    </div>
+  </div>
+
+  <script src="js/database.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    // Check if already logged in
+    if (auth.isLoggedIn()) {
+      window.location.href = 'menu.html';
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      const result = auth.login(email, password);
+      const messageDiv = document.getElementById('message');
+      
+      if (result.success) {
+        messageDiv.innerHTML = `<div class="alert alert-success">${result.message}</div>`;
+        setTimeout(() => {
+          if (result.user.role === 'admin') {
+            window.location.href = 'admin.html';
+          } else {
+            window.location.href = 'menu.html';
+          }
+        }, 1000);
+      } else {
+        messageDiv.innerHTML = `<div class="alert alert-error">${result.message}</div>`;
+      }
+    });
+
+    // Toggle show password
+    document.getElementById('showPassword').addEventListener('change', function(e) {
+      document.getElementById('password').type = this.checked ? 'text' : 'password';
+    });
+  </script>
+</body>
+</html>

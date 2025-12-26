@@ -1,0 +1,93 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "email": "admin@cafe.com",
+      "password": "admin123",
+      "role": "admin"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Espresso",
+      "category": "Coffee",
+      "priceHot": 120.00,
+      "priceCold": 130.00,
+      "description": "Strong and bold coffee shot",
+      "image": "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=300",
+      "available": true,
+      "hasTemperature": true
+    },
+    {
+      "id": 2,
+      "name": "Cappuccino",
+      "category": "Coffee",
+      "priceHot": 150.00,
+      "priceCold": 165.00,
+      "description": "Espresso with steamed milk foam",
+      "image": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=300",
+      "available": true,
+      "hasTemperature": true
+    },
+    {
+      "id": 3,
+      "name": "Latte",
+      "category": "Coffee",
+      "priceHot": 150.00,
+      "priceCold": 165.00,
+      "description": "Smooth espresso with steamed milk",
+      "image": "https://images.unsplash.com/photo-1561882468-9110e03e0f78?w=300",
+      "available": true,
+      "hasTemperature": true
+    },
+    {
+      "id": 4,
+      "name": "Croissant",
+      "category": "Pastry",
+      "price": 130.00,
+      "description": "Buttery and flaky pastry",
+      "image": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=300",
+      "available": true,
+      "hasTemperature": false
+    },
+    {
+      "id": 5,
+      "name": "French Fries",
+      "category": "Side Dish",
+      "price": 110.00,
+      "description": "Crispy golden fries",
+      "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=300",
+      "available": true,
+      "hasTemperature": false
+    },
+    {
+      "id": 6,
+      "name": "Garlic Bread",
+      "category": "Side Dish",
+      "price": 90.00,
+      "description": "Toasted bread with garlic butter",
+      "image": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=300",
+      "available": true,
+      "hasTemperature": false
+    },
+    {
+      "id": 7,
+      "name": "Onion Rings",
+      "category": "Side Dish",
+      "price": 95.00,
+      "description": "Crispy battered onion rings",
+      "image": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=300",
+      "available": true,
+      "hasTemperature": false
+    }
+  ],
+  "orders": [],
+  "theme": {
+    "primaryColor": "#6f4e37",
+    "secondaryColor": "#d4a574",
+    "fontFamily": "Arial, sans-serif",
+    "siteName": "Café Delight"
+  }
+}

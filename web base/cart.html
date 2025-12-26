@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart - Cafewaa</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo" id="siteName">Cafewaa</div>
+      <ul class="nav-links">
+        <li><a href="menu.html" class="nav-link"><span class="nav-icon">☕</span> Menu</a></li>
+        <li><a href="cart.html" class="nav-link"><span class="nav-icon">🛒</span> Cart <span class="cart-badge" id="cartCount">0</span></a></li>
+        <li><a href="orders.html" class="nav-link"><span class="nav-icon">📋</span> Orders</a></li>
+        <li id="adminLink" style="display: none;"><a href="admin.html" class="nav-link"><span class="nav-icon">⚙️</span> Admin</a></li>
+      </ul>
+      <div class="user-info">
+        <span class="user-name" id="userName"></span>
+        <button class="logout-btn" onclick="auth.logout()">Logout</button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Your Cart</h1>
+    <div id="message"></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-total" id="cartTotal"></div>
+    <button class="btn" onclick="checkout()" style="max-width: 300px; margin: 2rem auto; display: block;">
+      Order Now
+    </button>
+  </div>
+
+  <script src="js/database.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

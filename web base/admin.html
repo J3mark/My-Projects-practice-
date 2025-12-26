@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Cafewaa</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo" id="siteName">Cafewaa</div>
+      <ul class="nav-links">
+        <li><a href="menu.html" class="nav-link"><span class="nav-icon">☕</span> Menu</a></li>
+        <li><a href="cart.html" class="nav-link"><span class="nav-icon">🛒</span> Cart <span class="cart-badge" id="cartCount">0</span></a></li>
+        <li><a href="orders.html" class="nav-link"><span class="nav-icon">📋</span> Orders</a></li>
+        <li><a href="admin.html" class="nav-link"><span class="nav-icon">⚙️</span> Admin</a></li>
+      </ul>
+      <div class="user-info">
+        <span class="user-name" id="userName"></span>
+        <button class="logout-btn" onclick="auth.logout()">Logout</button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="admin-container">
+    <h1>Admin Dashboard</h1>
+    <div id="message"></div>
+
+    <div class="admin-tabs">
+      <button class="tab-btn active" onclick="switchTab('theme')">Theme Customization</button>
+      <button class="tab-btn" onclick="switchTab('products')">Products Management</button>
+      <button class="tab-btn" onclick="switchTab('users')">Users Management</button>
+      <button class="tab-btn" onclick="switchTab('orders')">Orders</button>
+    </div>
+
+    <!-- Theme Tab -->
+    <div id="theme-tab" class="tab-content active">
+      <h2>Customize Theme</h2>
+      <div class="theme-customizer">
+        <div class="form-group">
+          <label for="siteName">Site Name</label>
+          <input type="text" id="siteNameInput" placeholder="Café Delight">
+        </div>
+
+        <div class="color-picker-group">
+          <label>Primary Color</label>
+          <div class="color-picker">
+            <input type="color" id="primaryColor" value="#6f4e37">
+            <input type="text" id="primaryColorText" value="#6f4e37">
+          </div>
+        </div>
+
+        <div class="color-picker-group">
+          <label>Secondary Color</label>
+          <div class="color-picker">
+            <input type="color" id="secondaryColor" value="#d4a574">
+            <input type="text" id="secondaryColorText" value="#d4a574">
+          </div>
+        </div>
+
+        <div style="display:flex;gap:0.75rem;align-items:center;">
+          <button class="btn" onclick="saveTheme()">Save Theme</button>
+          <button class="btn" style="background:transparent;border:1px solid #ddd;color:#333;" onclick="resetTheme()">Reset to Default</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Products Tab -->
+    <div id="products-tab" class="tab-content">
+      <h2>Manage Products</h2>
+      
+      <div class="product-form">
+        <h3>Add New Product</h3>
+        <input type="text" id="productName" placeholder="Product Name">
+        <select id="productCategory">
+          <option value="">Select Category</option>
+          <option value="Coffee">Coffee</option>
+          <option value="Pastry">Pastry</option>
+          <option value="Side Dish">Side Dish</option>
+        </select>
+        <div id="priceInputs">
+          <input type="number" id="productPrice" placeholder="Price" step="0.01">
+        </div>
+        <textarea id="productDescription" placeholder="Description"></textarea>
+        <label style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+          <input type="checkbox" id="productHasTemperature" onchange="toggleTemperaturePrices()">
+          Has Hot/Cold Options
+        </label>
+        <div class="image-upload-section">
+          <label>Product Image</label>
+          <div class="image-upload-options">
+            <div class="upload-option">
+              <label for="productImageFile" class="upload-label">
+                <input type="file" id="productImageFile" accept="image/*" onchange="handleImageUpload('productImageFile', 'productImagePreview', 'productImage')">
+                <span class="upload-btn">📷 Upload Image</span>
+              </label>
+              <div id="productImagePreview" class="image-preview"></div>
+            </div>
+            <div class="upload-divider">OR</div>
+            <div class="upload-option">
+              <input type="url" id="productImage" placeholder="Image URL" onchange="clearFileUpload('productImageFile', 'productImagePreview')">
+            </div>
+          </div>
+        </div>
+        <button class="btn" onclick="addProduct()">Add Product</button>
+      </div>
+
+      <table class="products-table" id="productsTable">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Available</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="productsTableBody"></tbody>
+      </table>
+    </div>
+
+    <!-- Users Tab -->
+    <div id="users-tab" class="tab-content">
+      <h2>Manage Users</h2>
+      <table class="products-table" id="usersTable">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="usersTableBody"></tbody>
+      </table>
+    </div>
+
+    <!-- Orders Tab -->
+    <div id="orders-tab" class="tab-content">
+      <h2>Orders</h2>
+      <div class="orders-list" id="ordersList"></div>
+    </div>
+  </div>
+
+  <script src="js/database.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
